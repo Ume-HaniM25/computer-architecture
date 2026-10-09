@@ -1,0 +1,21 @@
+global_main
+extern_printf
+section.data
+format db"EAX=%d,EBX=%d",10,0
+section.text
+_main:
+;Store10insideEAX.
+moveax,10
+;Store20insideEBX.
+movebx,20
+;AddEBXtoEAX.
+addeax,ebx
+;EAXnowcontains30.
+;EBXstillcontains20.
+pushebx
+pusheax
+pushformat
+call_printf
+addesp,12
+xoreax,eax
+ret
